@@ -1,20 +1,19 @@
 import React from "react";
 function ProfileCard(props){
-    const{ image, designation, name, jobDescription } = props;
+    const{ productId, productPic, productName, Brand, productDescription, Price } = props;
     function handleClick(){
-        alert(name);
+        const message = `Product ${productId} is ${productName} of brand ${Brand} has price is added to the cart. Please proceed proceed to pay !!!`
+        alert(message);
     };
     return(
 <>
-
-
 <div className="card">
-<img src={image} alt={name} />
+<img src={productPic} alt={productName} />
 <div className="card-body">
-<h4 className="card-subtitle">{designation}</h4>
-<h3 className="card-title">{name}</h3> 
-<p className="card-text">{jobDescription}</p>
-<button onClick={handleClick}>See More</button>
+<h4 className="card-subtitle">{Brand}</h4>
+<h3 className="card-title">{productDescription}</h3> 
+<p className="card-text">{Price}</p>
+<button onClick={handleClick}>Add to Cart</button>
 </div>
 </div>
 </>

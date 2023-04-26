@@ -1,50 +1,42 @@
-import ProfileCard from './component/ProfileCard';
-import './App.css';
+import ProductCard from "./component/productdetail";
+import './component/productdetail.css'
 
 function App() {
+
+  const productDetails = [
+    {
+        productId :"1",
+         image:"https://m.media-amazon.com/images/I/6156upwZ+XL._UY695_.jpg",
+         productName :"Shoes",
+         Brand :"Mico",
+         productDescription :"The new sneakers are comfortable and stylish.",
+         Price :"$50"
+    },
+    {
+      productId :"2",
+      image:"https://m.media-amazon.com/images/I/71On2XSPuRL._AC_UL600_FMwebp_QL65_.jpg",
+      productName :"Shirt",
+      Brand :"Lymio",
+      productDescription :"The cotton T-shirt, soft and breathable.",
+      Price :"$30",
+      AddToCart :"AddToCart"
+    },
+    {
+      productId:"3",
+      image:"https://m.media-amazon.com/images/I/61NiR2F2uML._AC_UY327_FMwebp_QL65_.jpg",
+      productName:"Cycle",
+      Brand :"MTB",
+      productDescription:"Experience the thrill of the ride - cycle",
+      Price :"$20"
+    }
+  ];
+  
+
   return (
     <div className="card-container">
-    <ProfileCard 
-     productId="1"
-     productPic="https://media.istockphoto.com/id/1324847242/photo/pair-of-white-leather-trainers-on-white-background.jpg?s=1024x1024&w=is&k=20&c=paCekjw8iHTIKD4jpPXPdZY60gtOgbXV3pO9k1OTASo="
-     productName="Shoe"
-     Brand="GARNIER"
-     productDescription="Garnier Pure Active Micellar Cleansing Water, 125 ml"
-     Price="$60"
-  
-    />
-    <ProfileCard 
-     productId="2"
-     productPic="https://media.istockphoto.com/id/1368179045/photo/a-silver-stainless-steel-analog-watch.jpg?b=1&s=170667a&w=0&k=20&c=dRs8nww4M4ibLBD1UMUzBYcw13lnk3Z7s0THB9_SM6Y="
-     productName="Watch"
-     Brand="GARNIER"
-     productDescription="Garnier Pure Active Micellar Cleansing Water, 125 ml"
-     Price="$60"
-    />
-    <ProfileCard 
-    productId="3"
-    productPic="https://media.istockphoto.com/id/1324847242/photo/pair-of-white-leather-trainers-on-white-background.jpg?s=1024x1024&w=is&k=20&c=paCekjw8iHTIKD4jpPXPdZY60gtOgbXV3pO9k1OTASo="
-    productName="Shoes2"
-    Brand="GARNIER"
-    productDescription="Garnier Pure Active Micellar Cleansing Water, 125 ml"
-    Price="$60"
-    />
-    <ProfileCard
-    productId="4"
-    productPic="https://media.istockphoto.com/id/1450776898/photo/african-american-black-man-in-dark-gray-t-shirt-and-blue-jeans-standing-in-front-of-white.jpg?b=1&s=170667a&w=0&k=20&c=05DF6BkEtz28bPvaepQqb-PEbBUcNlQP-G-qrB3E4bU="
-    productName="Tshirt"
-    Brand="GARNIER"
-    productDescription="Garnier Pure Active Micellar Cleansing Water, 125 ml"
-    Price="$60"
-    />
-    <ProfileCard
-    productId="5"
-    productPic="https://media.istockphoto.com/id/1368179045/photo/a-silver-stainless-steel-analog-watch.jpg?b=1&s=170667a&w=0&k=20&c=dRs8nww4M4ibLBD1UMUzBYcw13lnk3Z7s0THB9_SM6Y="
-    productName="Phone"
-    Brand="GARNIER"
-    productDescription="Garnier Pure Active Micellar Cleansing Water, 125 ml"
-    Price="$60"
-    />
+      {productDetails.map(productDetail => (
+        <ProductCard key={productDetail.productId} productDetail={productDetail} />
+      ))}
     </div>
   );
 }

@@ -1,34 +1,23 @@
-import { useState } from "react";
 
+import {useState} from 'react';
 
-
-function App() {
-
-  const [count, setCount]=useState(0)
-
-  function IncreaseCount(){
-    return(
-        setCount(count + 1)
-    )
-  }
-
-  function DecreaseCount(){
-    return(
-        (count>0?setCount(count-1):(0))
-    )
-  }
-
-
-  return (
-    <div className="App">
-      <>
-      <h1>{count}</h1> 
-      <button onClick={IncreaseCount}>Increase</button>
-      <button onClick={DecreaseCount}>Decrease</button>
-
-      </>
-    </div>
-  );
+function App(){
+    const [name, setName] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const nameInput =  e.target.name.value;
+        setName(nameInput);
+        e.target.name.value= "";
+    }
+    return (
+<div className="App">
+<h2> Hi my name is {name ? name :'****'}!</h2>
+<form onSubmit={handleSubmit}>
+    <label htmlFor="name"> Name: </label>
+    <input className="input" type = "text" placeholder="Add your name..." name='name' id="name" />
+    <button type="submit">Submit</button>
+</form>
+</div>
+    );
 }
-
 export default App;

@@ -1,3 +1,6 @@
+
+import React from "react";
+
 function ProductCard(props){
     const{ productId, image, productName, Brand, productDescription, Price}=props.productDetail
     function handleClick(){

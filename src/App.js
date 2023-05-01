@@ -1,13 +1,12 @@
 import './App.css';
-import luckynumber from './component/luckynumber';
-import UsingRef from './component/useref'
-function App(){
-    return (
-        <div className='App'>
-        <luckynumber/>
-        <UsingRef/>
-        </div>
-    );
+import ImageChanger from './component/usingeffect'
+
+function App() {
+  return (
+    <div className="App">
+      <ImageChanger/>
+    </div>
+  );
 }
 
 export default App;

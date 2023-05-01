@@ -1,8 +1,13 @@
-import Game from './component/luckynumber'
+import './App.css';
+import luckynumber from './component/luckynumber';
+import UsingRef from './component/useref'
 function App(){
     return (
-        <Game/>
-    )
+        <div className='App'>
+        <luckynumber/>
+        <UsingRef/>
+        </div>
+    );
 }
 
 export default App;

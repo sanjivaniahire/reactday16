@@ -16,7 +16,7 @@ export default function Game(){
         if (attempt>=5){
             alert('You have completed your maximum attempts')
         }
-        if (number == luckyNumber){
+        if (number === luckyNumber){
             alert('Congrats u have won the game!!! ' + attempt + " attempts")
         }else if (number > luckyNumber) {
             alert('Your number is greater than luckynumber')

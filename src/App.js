@@ -1,10 +1,9 @@
-import './App.css';
-import ImageChanger from './component/usingeffect'
+import UserDetail from './component/UserDetails'
 
 function App() {
   return (
     <div className="App">
-      <ImageChanger/>
+      <UserDetail/>
     </div>
   );
 }

@@ -1,9 +1,9 @@
-import UserDetail from './component/UserDetails'
+import NewDogImg from './component/NewDog'
 
 function App() {
   return (
     <div className="App">
-      <UserDetail/>
+      <NewDogImg/>
     </div>
   );
 }

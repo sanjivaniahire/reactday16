@@ -1,9 +1,9 @@
-import Dog from './component/NewDog';
+import OtpGenerate from './component/OtpGenerator';
 
 function App() {
   return (
     <div className="App">
-      <Dog/>
+      <OtpGenerate/>
     </div>
   );
 }

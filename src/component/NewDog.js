@@ -1,27 +1,17 @@
-import { useState, useEffect } from "react";
-import './NewDog.css'
+import { useState } from "react";
+import  axios  from "axios";
 
-function NewDogImg(){
-    const [imgUrl, setImgUrl]= useState("");
-    useEffect(()=>{
-    async function ImgDog(){
-        try{
-            const data= await fetch('https://dog.ceo/api/breeds/image/random')
-            const NewData=await data.json();
-            setImgUrl(NewData.message);
-        }
-        catch(error){
-            console.log(error)
-        }
+export default function Dog(){
+    const [image,setImage] = useState()
+    function handleClicked(){
+        axios.get('https://dog.ceo/api/breeds/image/random')
+        .then((response)=>setImage (response. data.message))
+        .catch((error)=>(error))
     }
-    ImgDog();
-
-    },[])
-    
     return(
-        <div>
-        <img src={imgUrl} alt="dog"/>
-         </div>
+        <>
+     <img src={image} alt="random dog"></img>
+        <button onClick={handleClicked}>click me</button>
+        </>
     )
 }
-export default NewDogImg

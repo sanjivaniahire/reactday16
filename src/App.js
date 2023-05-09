@@ -1,10 +1,13 @@
-import OtpGenerate from './component/OtpGenerator';
 
+import Navbar from './component/Atoms/navbar';
+import Hero from './component/Molecules/hero';
 function App() {
   return (
-    <div className="App">
-      <OtpGenerate/>
+    <div>
+      <Navbar/>
+      <Hero/>
     </div>
+  
   );
 }
 

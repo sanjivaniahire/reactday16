@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function OtpGenerate() {
   const [mobile, setMobile] = useState("");
@@ -12,17 +13,13 @@ function OtpGenerate() {
       setError("Please enter a valid 10-digit Indian mobile number");
       return;
     }
-    fetch("https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ mobile }),
-    })
+    axios
+      .post("https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP", { mobile }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
         setOtpSent(true);
         setError("");
       })
@@ -41,22 +38,22 @@ function OtpGenerate() {
 
   return (
     <center>
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Mobile Number:
-          <input type="tel" value={mobile} onChange={handleMobileChange} />
-        </label>
-        <button type="submit">Send OTP</button>
-      </form>
-      {error && <p>{error}</p>}
-      {otpSent && (
-        <div>
-          <p>OTP sent successfully to {mobile}</p>
-          <button onClick={handleResendOtp}>Resend OTP</button>
-        </div>
-      )}
-    </div>
+      <div className="App">
+        <form onSubmit={handleSubmit}>
+          <label>
+            Mobile Number:
+            <input type="tel" value={mobile} onChange={handleMobileChange} />
+          </label>
+          <button type="submit">Send OTP</button>
+        </form>
+        {error && <p>{error}</p>}
+        {otpSent && (
+          <div>
+            <p>OTP sent successfully to {mobile}</p>
+            <button onClick={handleResendOtp}>Resend OTP</button>
+          </div>
+        )}
+      </div>
     </center>
   );
 }

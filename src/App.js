@@ -1,60 +1,92 @@
-import ProfileCard from  "./component/Atoms/ProfileCard";
-import styles from './component/Atoms/ProfileCard.module.css'
 
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
+  const [winner, setWinner] = useState(null);
+
+  function handleClick(i) {
+    const newSquares = squares.slice();
+    if (winner || newSquares[i]) return;
+    newSquares[i] = xIsNext ? "X" : "O";
+    setSquares(newSquares);
+    setXIsNext(!xIsNext);
+    setWinner(calculateWinner(newSquares));
+  }
+
+  function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
+
+  function renderSquare(i) {
+    return (
+      <button className="square" onClick={() => handleClick(i)}>
+        {squares[i]}
+      </button>
+    );
+  }
+
+  function renderStatus() {
+    if (winner) {
+      return "Winner: " + winner;
+    } else {
+      return "Next player: " + (xIsNext ? "X" : "O");
+    }
+  }
+
+  function resetGame() {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+    setWinner(null);
+  }
+
   return (
-    <div className={styles.box}>
-    <div className={styles.cardContainer}>
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/men/33.jpg"
-        designation="Web Developer"
-        name="John Carlos"
-        jobDescription= "Software engineer with a passion for creating clean, efficient code and developing innovative solutions."
-      />
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/women/3.jpg"
-        designation="Software Engineer"
-        name="Sanjivani Ahire"
-        jobDescription="Software engineer with a passion for creating clean, efficient code and developing innovative solutions."
-      />
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/men/47.jpg"
-        designation="UI/UX Designer"
-        name="Arias Roy"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/men/88.jpg"
-        designation="UI/UX Designer"
-        name="Rajiv Singh"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/women/19.jpg"
-        designation="UI/UX Designer"
-        name="Neeta Kapoor"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-      <ProfileCard
-        image="https://randomuser.me/api/portraits/women/66.jpg"
-        designation="UI/UX Designer"
-        name="Neha Yadav"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-       <ProfileCard
-        image="https://randomuser.me/api/portraits/women/79.jpg"
-        designation="UI/UX Designer"
-        name="Shanaya Deshmukh"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-       <ProfileCard
-        image="https://randomuser.me/api/portraits/women/87.jpg"
-        designation="UI/UX Designer"
-        name="Priya Sen"
-        jobDescription="Talented UI/UX designer with a keen eye for detail and a passion for creating visually stunning UI."
-      />
-    </div>
+    <div className="game">
+      <div className="game-board">
+        <div className="board-row">
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </div>
+      </div>
+      <div className="game-info">
+        <div className="status">{renderStatus()}</div>
+        <button className="start-button" onClick={resetGame}>
+          Start Again
+        </button>
+      </div>
     </div>
   );
 }

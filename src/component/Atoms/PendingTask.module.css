@@ -1,0 +1,37 @@
+.btn1{
+    margin-left: 80px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+    border: none;
+
+}
+
+.btn2{
+    margin-right: -30px;
+    border-radius: 5px;
+    color: white;
+    background-color: red;
+    border: none;
+}
+
+.btn2:hover{
+    cursor: pointer;
+}
+
+.btn1:hover{
+    cursor: pointer;
+}
+
+
+.inputBox{
+    border:3px solid white;
+    width: 70%;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+    padding-top: 4%;
+    text-align:center;
+}

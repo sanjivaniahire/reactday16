@@ -1,20 +1,48 @@
+import React, { useState } from "react";
 
-import React from "react";
-import PendingTasksList from "./component/Molecules/PendingTaskList";
-import './App.css'
+const UserManagement = () => {
+  const [users, setUsers] = useState([]);
+  const [newUser, setNewUser] = useState("");
 
-function App() {
-  const tasks = [
-    { id: 1, title: "Task 1", completed: false },
-    { id: 2, title: "Task 2", completed: false },
-    { id: 3, title: "Task 3", completed: false },
-  ];
+  const deleteUser = (index) => {
+    const updatedUsers = [...users];
+    updatedUsers.splice(index, 1);
+    setUsers(updatedUsers);
+  };
+
+  const addUser = () => {
+    if (newUser !== "") {
+      const updatedUsers = [...users, newUser];
+      setUsers(updatedUsers);
+      setNewUser("");
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      addUser();
+    }
+  };
 
   return (
-    <div className='container'>
-      <PendingTasksList tasks={tasks} />
+    <div>
+      <ul>
+        {users.map((user, index) => (
+          <li key={index}>
+            {user}
+            <button onClick={() => deleteUser(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        value={newUser}
+        onChange={(event) => setNewUser(event.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={addUser}>Add User</button>
     </div>
   );
-}
+};
 
-export default App;
+export default UserManagement;

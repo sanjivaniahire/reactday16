@@ -1,16 +1,13 @@
-// src/App.js
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store/store';
-import SearchBar from './component/SearchBarr';
-import TodoList from './component/TodoList';
+import SearchBar from './component/SearchBar';
+import './App.css'
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <div>
+      <h1>Google Search</h1>
       <SearchBar />
-      <TodoList />
-    </Provider>
+    </div>
   );
 };
 
